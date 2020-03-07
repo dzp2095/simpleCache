@@ -40,8 +40,9 @@ public:
 				hash_map.erase(freq_map.begin()->second.first);
 				freq_map.erase(freq_map.begin());
 			}
-            auto newItr = freq_map.insert({1,{key,value}});
-            hash_map[key]=newItr;
+			//freq_map.begin() is a hint position, which can make the complexity to constant
+		        auto newItr = freq_map.insert(freq_map.begin(),{1,{key,value}});
+		        hash_map[key]=newItr;
 		}
 	}
 
